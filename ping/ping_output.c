@@ -138,15 +138,15 @@ inline void ping_print_statistics(struct ping_rts *rts, struct timespec tv)
 
 	tmdev = llsqrt(tmvar);
 
-	sprintf(rttmin, "%ld.%03ld", (long)rts->tmin / 1000, (long)rts->tmin % 1000);
-	sprintf(rttavg, "%lu.%03ld", (unsigned long)(tmavg / 1000), (long)(tmavg % 1000));
-	sprintf(rttmax, "%ld.%03ld", (long)rts->tmax / 1000, (long)rts->tmax % 1000);
-	sprintf(rttmdev, "%ld.%03ld", (long)tmdev / 1000, (long)tmdev % 1000);
+	sprintf(rttmin, "%06ld", (long)rts->tmin);
+	sprintf(rttavg, "%06lu", (unsigned long)tmavg);
+	sprintf(rttmax, "%06ld", (long)rts->tmax);
+	sprintf(rttmdev, "%06ld", (long)tmdev);
 
 	if (rts->opt_json) {
 		construct_json_statistics(rts, tv, rttmin, rttavg, rttmax, rttmdev);
 	} else {
-		printf(_("rtt min/avg/max/mdev = %s/%s/%s/%s ms"),
+		printf(_("rtt min/avg/max/mdev = %s/%s/%s/%s us"),
 			rttmin, rttavg, rttmax, rttmdev);
 	}
 }

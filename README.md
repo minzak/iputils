@@ -3,6 +3,13 @@
 
 The iputils package is set of small useful utilities for Linux networking.
 
+WITH MAX PRECISION IN MICROSEC!
+```
+64 bytes from waw07s03-in-f14.1e100.net (142.250.75.14): icmp_seq=1 ident=29528 ttl=115 time=007052 us
+64 bytes from waw07s03-in-f14.1e100.net (142.250.75.14): icmp_seq=2 ident=29528 ttl=115 time=007236 us
+64 bytes from waw07s03-in-f14.1e100.net (142.250.75.14): icmp_seq=3 ident=29528 ttl=115 time=007788 us
+```
+
 ## Installation
 ```
 $ ./configure && meson build

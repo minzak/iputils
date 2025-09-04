@@ -852,32 +852,9 @@ restamp:
 			return 1;
 		}
 		if (rts->timing) {
-			char *fmt;
-			long int num, dec = 0;
 			char outtime[30];
-
-			if (rts->opt_rtt_precision) {
-				fmt = "%ld.%03ld";
-				num = triptime / 1000;
-				dec = triptime % 1000;
-			} else if (triptime >= 100000 - 50) {
-				fmt = "%ld";
-				num = (triptime + 500) / 1000;
-			} else if (triptime >= 10000 - 5) {
-				fmt = "%ld.%01ld";
-				num = (triptime + 50) / 1000;
-				dec = ((triptime + 50) % 1000) / 100;
-			} else if (triptime >= 1000) {
-				fmt = "%ld.%02ld";
-				num = (triptime + 5) / 1000;
-				dec = ((triptime + 5) % 1000) / 10;
-			} else {
-				fmt = "%ld.%03ld";
-				num = triptime / 1000;
-				dec = triptime % 1000;
-			}
-			snprintf(outtime, sizeof(outtime), fmt, num, dec);
-			ping_print_str(rts, _(" time=%s ms"), "time", outtime);
+			snprintf(outtime, sizeof(outtime), "%06ld", triptime);
+			ping_print_str(rts, _(" time=%s us"), "time", outtime);
 		}
 
 		if (dupflag && (!multicast || rts->opt_verbose))
@@ -934,10 +911,11 @@ void status(struct ping_rts *rts)
 	if (rts->nreceived && rts->timing) {
 		tavg = rts->tsum / (rts->nreceived + rts->nrepeats);
 
-		fprintf(stderr, _(", min/avg/ewma/max = %ld.%03ld/%lu.%03ld/%d.%03d/%ld.%03ld ms"),
-			(long)rts->tmin / 1000, (long)rts->tmin % 1000,
-			tavg / 1000, tavg % 1000,
-			(int)(rts->rtt / 8000), (int)((rts->rtt / 8) % 1000), (long)rts->tmax / 1000, (long)rts->tmax % 1000);
+		fprintf(stderr, _(", min/avg/ewma/max = %ld/%lu/%d/%ld us"),
+			(long)rts->tmin,
+			tavg,
+			(int)(rts->rtt / 8),
+			(long)rts->tmax);
 	}
 	fprintf(stderr, "\n");
 }
