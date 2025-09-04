@@ -1,4 +1,4 @@
-[![Build Status](https://github.com/iputils/iputils/actions/workflows/ci.yml/badge.svg)](https://github.com/iputils/iputils/actions/workflows/ci.yml)
+[![Build Status](https://github.com/minzak/iputils/actions/workflows/ci.yml/badge.svg)](https://github.com/minzak/iputils/actions/workflows/ci.yml)
 [![Coverity Status](https://scan.coverity.com/projects/1944/badge.svg?flat=1)](https://scan.coverity.com/projects/1944)
 
 The iputils package is set of small useful utilities for Linux networking.
