@@ -141,6 +141,7 @@ dist()
 	local f
 
 	echo "=== dist ($formats) ==="
+	git reset --hard
 	meson dist -C $BUILD_DIR --formats $formats
 
 	for f in $(echo "$formats" | sed 's/,/ /g'); do
