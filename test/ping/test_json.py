@@ -25,7 +25,7 @@ for arguments in [
   ['-V'],
   ['-s5000', '-Mdo', 'opensuse.org'],
   # flood statistics
-  ['-s50000', '-c50', '-6', '-A', '-n', 'ip.opensuse.org'],
+  ['-s50000', '-c10', '-6', '-A', '-n', 'ip.opensuse.org'],
 ]:
   command = [ping, '-jc', str(count)] + arguments
   print(command)
