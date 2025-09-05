@@ -136,7 +136,7 @@ install()
 
 dist()
 {
-	local formats="xztar,gztar,zip"
+	local formats="gztar"
 	local tag="$(meson introspect $BUILD_DIR --projectinfo | jq -r '.version')"
 	local f
 
